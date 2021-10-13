@@ -8,7 +8,7 @@ function App() {
       <Router>
          <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route path="/scenicSpot/:callId" component={CallDetail} />
+            <Route path="/:callId" component={CallDetail} />
          </Switch>
       </Router>
    );

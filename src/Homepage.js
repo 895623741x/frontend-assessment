@@ -13,13 +13,13 @@ function Homepage() {
 
    useEffect(() => {
       axios.get(`https://aircall-job.herokuapp.com/activities`).then((res) => {
-         console.log(res.data);
+         // console.log(res.data);
 
          setCalls(res.data);
       });
    }, []);
-
-   console.log(existingDates);
+   // console.log(calls)
+   // console.log(existingDates);
 
    const convertDate = (time) => {
       const date = time.substring(0, 10);
@@ -40,6 +40,8 @@ function Homepage() {
    };
 
    const mapAllCallsHandler = (call, index) => {
+      const id = call.id;
+      // console.log(id);
       const isMissed = call.call_type;
       const callDate = convertDate(call.created_at);
       const minAndHour = convertHourAndMin(call.created_at);
@@ -58,6 +60,7 @@ function Homepage() {
                from={call.from}
                type={isMissed}
                key={index}
+               callId={id}
             />
          );
       } else {
@@ -70,6 +73,7 @@ function Homepage() {
                from={call.from}
                type={isMissed}
                key={index}
+               callId={id}
             />
          );
       }
